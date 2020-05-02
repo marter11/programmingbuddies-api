@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  web:
+    build:
+      context: .
+      network: host
+    environment:
+      - COMPOSE_CONVERT_WINDOWS_PATHS=1
+    env_file:
+     - .env
+    ports:
+      - "5001:5001"
+  mysql:
+    image: "mysql:8"
+    env_file:
+     - .env

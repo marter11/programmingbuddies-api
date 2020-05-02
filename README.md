@@ -24,9 +24,7 @@ API backend for Programming Buddies (projects management)
 - create a file `.env`
 - - `.env` in this case is the full filename and not just the extension. `app.env` for example would not be loaded automatically by pipenv
 - - add line `FLASK_ENV=development` to have the server automatically restart on file changes
-- - add line `CONNECT=mysql+pymysql://<user>:<password>@localhost:3306/<database name>` to specify connection parameters
-- `pipenv run python src/runserver.py`
-- - run with flag `--reset-db` to recreate all tables on start
+- - add line `CONNECT=mysql+pymysql://<user>:<password>@<hostname>:3306/<database name>` to specify connection parameters (for `hostname` use `host.docker.internal` for docker setup or `localhost` for local development)
 - add line `APP_SECRET=somepassword` as app secret. This is used to sign sessions among other things and is required
 - Optain credentials for Github
 - - Under your github account Settings go to Developer Settings and OAuth Apps
@@ -34,6 +32,15 @@ API backend for Programming Buddies (projects management)
 - - Copy the Client Id and Client Secret from that site and save them in `.env`as `GITHUB_ID` and `GITHUB_SECRET` respectively
 
 Your `.env` file should now look something like [example.env](https://github.com/ProgrammingBuddies/programmingbuddies-api/blob/develop/example.env)
+
+### Running the application
+#### Docker setup
+- `docker-compose up --build` to build and run the container
+- - `docker-compose up` to run without rebuilding
+
+#### Local development
+- `pipenv run python src/runserver.py`
+- - run with flag `--reset-db` to recreate all tables on start
 
 ## Milestones
 - [ ] build DB and endpoints with basic CRUD
