@@ -10,6 +10,10 @@ services:
      - .env
     ports:
       - "5001:5001"
+    volumes:
+      - type: bind
+        source: ./
+        target: /pb_api
   mysql:
     image: "mysql:8"
     env_file:
